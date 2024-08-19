@@ -1,12 +1,24 @@
-#pragma once
+#ifndef QTSQL_MAINWINDOW_HPP
+#define QTSQL_MAINWINDOW_HPP
 
-#include <QApplication>
+#include <QMainWindow>
 
-class MainWindow {
+
+QT_BEGIN_NAMESPACE
+namespace Ui { class MainWindow; }
+QT_END_NAMESPACE
+
+class MainWindow : public QMainWindow {
+Q_OBJECT
+
 public:
-    MainWindow();
-    ~MainWindow();
+    explicit MainWindow(QWidget *parent = nullptr);
+
+    ~MainWindow() override;
 
 private:
-    std::unique_ptr<QWidget> window;
+    Ui::MainWindow *ui;
 };
+
+
+#endif //QTSQL_MAINWINDOW_HPP

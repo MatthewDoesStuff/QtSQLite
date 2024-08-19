@@ -1,16 +1,13 @@
 #include "MainWindow.hpp"
+#include "ui_MainWindow.h"
 
-#include <QWidget>
-#include <QScreen>
 
-MainWindow::MainWindow() : window{std::make_unique<QWidget>()}{
-    const auto rec = QApplication::primaryScreen()->geometry();
-    const auto width=rec.width();
-    const auto height=rec.height();
-
-    window->resize(width, height);
-    window->setWindowTitle("MainWindow");
-    window->show();
+MainWindow::MainWindow(QWidget *parent) :
+        QMainWindow{parent}, ui{new Ui::MainWindow} {
+    ui->setupUi(this);
+    parent->show();
 }
 
-MainWindow::~MainWindow()=default;
+MainWindow::~MainWindow() {
+    delete ui;
+}
